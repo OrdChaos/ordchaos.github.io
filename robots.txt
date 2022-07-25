@@ -1,0 +1,8 @@
+User-agent: * Allow: /
+Allow: /archives/
+Disallow: /vendors/
+Disallow: /categories/
+
+
+Sitemap: https://www.ordchaos.com/sitemap.xml
+Sitemap: https://www.ordchaos.com/baidusitemap.xml
