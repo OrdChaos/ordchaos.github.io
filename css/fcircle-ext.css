@@ -1,0 +1,1 @@
+:root{--lmm-hover:#30a9de;--lmm-background:#ffffff}.cf-article{background:var(--lmm-background);border:1px solid #e9e9e9}.cf-article:hover{transition:transform .3s;-webkit-transform:scale(1.01);transform:scale(1.01)}#cf-more,#cf-state{background:var(--lmm-background);border:1px solid #e9e9e9}.cf-overshow{background:var(--lmm-background);border:1px solid #e9e9e9}
