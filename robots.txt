@@ -1,0 +1,16 @@
+User-agent: *Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+Allow: /about/
+Allow: /links/
+Allow: /bangumis/
+Allow: /page/
+Allow: /posts/
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+Disallow: /img/
+
+Sitemap: https://www.ordchaos.com/sitemap.xml
+Sitemap: https://www.ordchaos.com/baidusitemap.xml
