@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow"/>
+    <link rel="shortcut icon" href="img/icons/icon-512x512-alpha.png" type="image/png">
+    <title>序炁的博客 - 安全中心</title>
+    <style type="text/css">
+        .container {
+            width: 100%;
+            max-width: 800px;
+            min-width: 350px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .background-box {
+            width: 100%;
+            height: 280px;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.35);
+            border-radius: 10px;
+            border: 1px white solid;
+        }
+
+        .message-box {
+            width: 80%;
+            height: 60px;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 10px;
+            border: 1px #C6C6C6 solid;
+        }
+
+        .button-box {
+            width: 12.5%;
+            min-width: 95px;
+            height: 45px;
+            position: absolute;
+            top: 210px;
+            right: 10%;
+            background: white;
+            border-radius: 10px;
+            border: 1px #C6C6C6 solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .button-box:hover {
+            transform: scale(1.1);
+        }
+
+	.button-box:active {
+    	    transform: scale(0.95);
+	}
+
+        .button-text {
+            color: black;
+            font-size: 16px;
+            font-family: Inter, sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .message-1 {
+            position: absolute;
+            top: 35px;
+            left: 5%;
+            color: black;
+            font-size: 16px;
+            font-family: Inter, sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .message-2 {
+            width: 90%;
+            position: absolute;
+            top: 170px;
+            left: 5%;
+            color: black;
+            font-size: 16px;
+            font-family: Inter, sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .link {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            width: 75%;
+            transform: translateX(-50%);
+            color: black;
+            font-size: 16px;
+            font-family: Inter, sans-serif;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        const host = window.location.host;
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            return r ? decodeURI(r[2]) : null;
+        }
+
+        function base64Decode(input) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+            let str = input.replace(/=+$/, '');
+            let output = '';
+
+            if (str.length % 4 == 1) {
+                throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+            }
+            for (let bc = 0, bs, buffer, idx = 0; buffer = str.charAt(idx++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
+                buffer = chars.indexOf(buffer);
+            }
+            return output;
+        }
+
+        var jump_url = GetQueryString('url');
+        
+        jump_url = base64Decode(jump_url);
+        
+        var UrlReg = '^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)';
+
+        let jumpUrlElement;
+
+        function jump() {
+            location.href = jump_url;
+        }
+
+        window.onload = function() {
+            jumpUrlElement = document.getElementById('jump-url');
+            jumpUrlElement.textContent = jump_url;
+            document.querySelector('.button-box').onclick = function() {
+                jump();
+            };
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="background-box"></div>
+        <div class="message-box"></div>
+        <button class="button-box">
+            <div class="button-text">访问</div>
+        </button>
+        <div class="message-1">你正在离开序炁的博客，尝试访问外站链接：</div>
+        <div class="message-2">博主无法保证该页面与博文完成时相同，如指向不良内容请尽快联系博主更新链接。</div>
+        <div class="link" id="jump-url"></div>
+    </div>
+    <script src="js/canvas-nest-mouse.min.js"></script>
+</body>
+</html>

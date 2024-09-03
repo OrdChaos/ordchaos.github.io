@@ -1,0 +1,1 @@
+var targetProtocol="https:";if(window.location.protocol!=targetProtocol&&document.location.hostname!="localhost")window.location.href=targetProtocol+window.location.href.substring(window.location.protocol.length);if(document.location.hostname!="www.ordchaos.com"&&document.location.hostname!="localhost"){window.location.href="https://www.ordchaos.com"}
